@@ -11,6 +11,9 @@ export default function Home() {
   const [flagsOrder, setFlagsOrder] = useState([]);
   const [patternLength, setPatternLength] = useState(3);
   const [showInstructions, setShowInstructions] = useState(false);
+  const [showContacts, setShowContacts] = useState(false);
+
+
 
   const API = import.meta.env.VITE_API_URL;
 
@@ -30,13 +33,6 @@ export default function Home() {
     timersRef.current.forEach(clearTimeout);
     timersRef.current = [];
   };
-
-  // // delete later
-  // useEffect(() => {
-  //   // clear all timers before the component unmounts
-  //   // (removed from screen)
-  //   return () => clearAllTimers();
-  // }, []);
 
   useEffect(() => {
     // if the current round has been completed
@@ -157,7 +153,21 @@ export default function Home() {
   };
 
 return (
-  <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
+  <div>
+  {/* Navbar */}
+<nav className="w-full bg-white shadow p-4 flex justify-between items-center fixed top-0 left-0 z-50">
+  <h1 className="text-lg font-semibold">Memory Challenge</h1>
+  <button
+    onClick={() => setShowContacts(true)}
+    className="px-3 py-1 rounded-lg bg-indigo-500 text-white hover:bg-indigo-600 text-sm"
+  >
+    Contacts
+  </button>
+</nav>
+
+
+
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
     <div className="w-full max-w-md">
       {/* Win / Fail / Title */}
       {win ? (
@@ -239,6 +249,52 @@ return (
   </div>
 )}
 
+{/* About Me Modal */}
+{/* Contacts Modal */}
+{showContacts && (
+  <div className="fixed inset-0 flex items-center justify-center z-50">
+    <div className="absolute inset-0 bg-black/30 backdrop-blur-sm"></div>
+    <div className="relative bg-white p-6 rounded-2xl shadow-lg max-w-md w-full">
+      <h2 className="text-xl font-semibold mb-4">Contacts</h2>
+      <ul className="space-y-3">
+        <li>
+          <a
+            href="https://github.com/abdulrhman3657"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-indigo-600 hover:underline"
+          >
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a
+            href="www.linkedin.com/in/abdulrhman-alnafisi-fc5b"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-indigo-600 hover:underline"
+          >
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <span className="font-medium">Email: </span>
+            abdulrhman09824@gmail.com
+        </li>
+      </ul>
+      <button
+        onClick={() => setShowContacts(false)}
+        className="mt-6 px-4 py-2 rounded-xl shadow bg-indigo-500 text-white hover:bg-indigo-600"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
+
+
+
+  </div>
   </div>
 );
 
