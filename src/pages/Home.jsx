@@ -269,9 +269,8 @@ return (
         </li>
         <li>
           <a
-            href="www.linkedin.com/in/abdulrhman-alnafisi-fc5b"
+            href="https://www.linkedin.com/in/abdulrhman-alnafisi-fc5b  "
             target="_blank"
-            rel="noopener noreferrer"
             className="text-indigo-600 hover:underline"
           >
             LinkedIn
